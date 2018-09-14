@@ -6,15 +6,37 @@
 
 public class SortMain{
 
+   //warming up for benchmarking
+   static {
+      //long start = System.nanoTime();
+      ManualClassLoader.load();
+      //long end = System.nanoTime();
+      //System.out.println("Warm-up time: " + (end-start));
+   }
    
+   //main()
    public static void main (String [] args) {
       int[] sizes = {};
       
       BenchmarkSorts sorter = new BenchmarkSorts(sizes);
       sorter.runSorts();
       sorter.displayReport();
+      
    }
 
 
 }
 
+class Dummy {
+   public void m(){
+   }
+}
+
+class ManualClassLoader {
+   protected static void load() {
+      for (int i = 0; i < 100000; i++) {
+         Dummy dummy = new Dummy();
+         dummy.m();
+      }
+   }
+}
