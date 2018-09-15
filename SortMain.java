@@ -16,7 +16,7 @@ public class SortMain{
    
    //main()
    public static void main (String [] args) {
-      int[] sizes = {};
+      int[] sizes = {10,25,50,100,250,500,750,1000,2500,5000};
       
       BenchmarkSorts sorter = new BenchmarkSorts(sizes);
       sorter.runSorts();
