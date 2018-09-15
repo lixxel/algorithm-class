@@ -27,6 +27,8 @@ public class SortMain{
 
 }
 
+
+// found warmup example at https://www.baeldung.com/java-jvm-warmup
 class Dummy {
    public void m(){
    }
