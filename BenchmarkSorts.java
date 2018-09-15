@@ -31,7 +31,7 @@ class BenchmarkSorts {
          //1 recursive times
          //2 iterative counts
          //3 iterative times
-         double[][] arrayData = new double[4][50];
+         long[][] arrayData = new long[4][50];
          
          //fifty times do
          for (int j = 0; j < 50; j++) {
@@ -44,14 +44,14 @@ class BenchmarkSorts {
                //test recursive
                selectionSorter.recursiveSort(recursiveArray);
                //record count
-               arrayData[0][j] = (double) selectionSorter.getCount();
+               arrayData[0][j] = (long) selectionSorter.getCount();
                //record time
                arrayData[1][j] = selectionSorter.getTime();
                
                //test iterative
                selectionSorter.iterativeSort(iterativeArray);
                //record count
-               arrayData[2][j] = (double) selectionSorter.getCount();
+               arrayData[2][j] = (long) selectionSorter.getCount();
                //record time
                arrayData[3][j] = selectionSorter.getTime();
             } catch (UnsortedException e) {
@@ -61,12 +61,12 @@ class BenchmarkSorts {
          
          //find averages and standard deviations
          for (int k = 0; k < 4; k ++) {
-            double sum = 0;
-            for (double d: arrayData[k]) sum += d;
+            long sum = 0;
+            for (long d: arrayData[k]) sum += d;
             double average = 1.0d * sum / 50;
             arrayStats[i][k*2] = average;
-            double std = 0.0;
-            for (double d: arrayData[k]) std += Math.pow(d - average, 2);
+            long std = 0;
+            for (long d: arrayData[k]) std += Math.pow(d - average, 2);
             arrayStats[i][k*2 +1] = Math.sqrt(std / 50);
          }
          
