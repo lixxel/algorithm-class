@@ -82,9 +82,9 @@ class BenchmarkSorts {
       for (int i = 0; i < 125; i++) System.out.print ("-");
       System.out.println("");
       for (int i = 0; i < sizes.length; i++){
-         System.out.print(String.format("%-11s | ", sizes[i]));
+         System.out.print(String.format("%-11s |", sizes[i]));
          for (int j = 0; j < 8; j++){
-            System.out.print(String.format("%-11.2f | ", arrayStats[i][j]));
+            System.out.print(String.format(" %-11.2f |", arrayStats[i][j]));
          }
          System.out.println("");
       }
