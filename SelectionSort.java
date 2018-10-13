@@ -32,10 +32,14 @@ class SelectionSort implements SortInterface {
          count ++; //critical operation, comparing each item to min
          if (list[i] < list [min]) min = i;
       }
-      count+=3; //critical operations, assignments
-      int temp = list[j];
-      list[j] = list[min];
-      list[min] = temp;
+      
+      count++; //critical operation, comparing two items to swap or not
+      if (list[j] != list [min]){
+         count+=3; //critical operations, assignments
+         int temp = list[j];
+         list[j] = list[min];
+         list[min] = temp;
+      }
       
       recursiveSortInner(list, j + 1);
 
@@ -56,10 +60,13 @@ class SelectionSort implements SortInterface {
                min = i;
             }
          }
-         count+=3; //critical operation, assignments
-         int temp = list[min];
-         list[min] = list[j];
-         list[j] = temp;
+         count++; //critical operation, comparing two items to swap or not
+         if (list[j] != list [min]){
+            count+=3; //critical operations, assignments
+            int temp = list[j];
+            list[j] = list[min];
+            list[min] = temp;
+         }
       }
       time = System.nanoTime() - start;
    } //end iterativeSort()
