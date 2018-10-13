@@ -20,11 +20,11 @@ class SelectionSort implements SortInterface {
       long start = System.nanoTime();
       recursiveSortInner(list, 0);
       long time = System.nanoTime() - start;
-      
-      checkSorted(list);
    } //end recursiveSort()
    
    private void recursiveSortInner(int[] list, int j){
+      //critical operation, comparing j to list length (default)
+      count++;
       if (j >= list.length - 1) return;
       
       int min = j;
@@ -32,6 +32,7 @@ class SelectionSort implements SortInterface {
          count ++; //critical operation, comparing each item to min
          if (list[i] < list [min]) min = i;
       }
+      count+=3; //critical operations, assignments
       int temp = list[j];
       list[j] = list[min];
       list[min] = temp;
@@ -55,13 +56,12 @@ class SelectionSort implements SortInterface {
                min = i;
             }
          }
+         count+=3; //critical operation, assignments
          int temp = list[min];
          list[min] = list[j];
          list[j] = temp;
       }
       time = System.nanoTime() - start;
-      
-      checkSorted(list);
    } //end iterativeSort()
    
    @Override
@@ -74,7 +74,7 @@ class SelectionSort implements SortInterface {
       return time;
    } //end getTime()
    
-   private void checkSorted(int[] list) throws UnsortedException {
+   public void checkSorted(int[] list) throws UnsortedException {
       for (int i = 0; i < list.length - 1; i++){
          if (list[i] > list[i+1]) throw new UnsortedException("Array not sorted correctly.");
       }

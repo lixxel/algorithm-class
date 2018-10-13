@@ -43,6 +43,8 @@ class BenchmarkSorts {
             try{
                //test recursive
                selectionSorter.recursiveSort(recursiveArray);
+               //test sorted
+               selectionSorter.checkSorted(recursiveArray);
                //record count
                arrayData[0][j] = (long) selectionSorter.getCount();
                //record time
@@ -50,6 +52,8 @@ class BenchmarkSorts {
                
                //test iterative
                selectionSorter.iterativeSort(iterativeArray);
+               //test sorted
+               selectionSorter.checkSorted(iterativeArray);
                //record count
                arrayData[2][j] = (long) selectionSorter.getCount();
                //record time
@@ -74,17 +78,17 @@ class BenchmarkSorts {
    } //end runSorts()
    
    public void displayReport(){
-      System.out.printf("%-11s | %-53s | %-53s |%n", "", "Recursive", "Iterative");
-      for (int i = 0; i < 125; i++) System.out.print ("-");
-      System.out.println("");
-      System.out.printf("%-11s | %-11s | %-11s | %-11s | %-11s | %-11s | %-11s | %-11s | %-11s |%n", "", "Average", "Coefficient", "Average", "Coefficient", "Average", "Coefficient", "Average", "Coefficient");
-      System.out.printf("%-11s | %-11s | %-11s | %-11s | %-11s | %-11s | %-11s | %-11s | %-11s |%n", "Size", "Count", "of Count", "Time", "of Time", "Count", "of Count", "Time", "of Time");
-      for (int i = 0; i < 125; i++) System.out.print ("-");
-      System.out.println("");
+      System.out.printf("%-12s | %-57s | %-57s |%n", "", "Recursive", "Iterative");
+      for (int i = 0; i < 133; i++) System.out.print ("-");
+      System.out.println("|");
+      System.out.printf("%-12s | %-12s | %-12s | %-12s | %-12s | %-12s | %-12s | %-12s | %-12s |%n", "", "Average", "Coefficient", "Average", "Coefficient", "Average", "Coefficient", "Average", "Coefficient");
+      System.out.printf("%-12s | %-12s | %-12s | %-12s | %-12s | %-12s | %-12s | %-12s | %-12s |%n", "Size", "Count", "of Count", "Time", "of Time", "Count", "of Count", "Time", "of Time");
+      for (int i = 0; i < 133; i++) System.out.print ("-");
+      System.out.println("|");
       for (int i = 0; i < sizes.length; i++){
-         System.out.print(String.format("%-11s |", sizes[i]));
+         System.out.print(String.format("%-12s |", sizes[i]));
          for (int j = 0; j < 8; j++){
-            System.out.print(String.format(" %-11.2f |", arrayStats[i][j]));
+            System.out.print(String.format(" %-12.2f |", arrayStats[i][j]));
          }
          System.out.println("");
       }
