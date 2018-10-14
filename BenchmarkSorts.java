@@ -71,7 +71,7 @@ class BenchmarkSorts {
             arrayStats[i][k*2] = average;
             long std = 0;
             for (long d: arrayData[k]) std += Math.pow(d - average, 2);
-            arrayStats[i][k*2 +1] = Math.sqrt(std / 50);
+            arrayStats[i][k*2 +1] = Math.sqrt(std / 50)/average;
          }
          
       }
@@ -87,9 +87,17 @@ class BenchmarkSorts {
       System.out.println("|");
       for (int i = 0; i < sizes.length; i++){
          System.out.print(String.format("%-12s |", sizes[i]));
-         for (int j = 0; j < 8; j++){
-            System.out.print(String.format(" %-12.2f |", arrayStats[i][j]));
-         }
+         //for (int j = 0; j < 8; j++){
+         //   System.out.print(String.format(" %-12.2f |", arrayStats[i][j]));
+         //}
+         System.out.print(String.format(" %-12.2f |", arrayStats[i][0]));
+         System.out.print(String.format(" %-12.2e |", arrayStats[i][1]));
+         System.out.print(String.format(" %-12.2f |", arrayStats[i][2]));
+         System.out.print(String.format(" %-12.2f |", arrayStats[i][3]));
+         System.out.print(String.format(" %-12.2f |", arrayStats[i][4]));
+         System.out.print(String.format(" %-12.2e |", arrayStats[i][5]));
+         System.out.print(String.format(" %-12.2f |", arrayStats[i][6]));
+         System.out.print(String.format(" %-12.2f |", arrayStats[i][7]));
          System.out.println("");
       }
    } //end displayReport()
