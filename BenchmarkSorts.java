@@ -4,6 +4,10 @@
 // Purpose: Run sort and display sorting report
 // Classes: BenchmarkSorts
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 class BenchmarkSorts {
    private int[] sizes;
    private double[][] arrayStats;
@@ -101,6 +105,29 @@ class BenchmarkSorts {
          System.out.println("");
       }
    } //end displayReport()
+   
+   public void saveReport(){
+      PrintWriter writer = null;
+      try {
+        writer = new PrintWriter(new File("SelectionSortReport.csv"));
+      } catch (FileNotFoundException e) {
+         e.printStackTrace();
+      }
+      StringBuilder sb = new StringBuilder();
+      sb.append("Size,Avg Count_R,Coef Count_R,Avg Time_R,CoefTime_R,AvgCount_I,CoefCount_I,AvgTime_I,CoefTime_I\n");
+      for (int i = 0; i < sizes.length; i++){
+         sb.append(sizes[i]);
+         sb.append(',');
+         for (int j = 0; j < 8; j++){
+            sb.append(arrayStats[i][j]);
+            if (j<7) sb.append(',');
+         }
+         sb.append('\n');
+      }
+      System.out.println("Saving...");
+      writer.write(sb.toString());
+      writer.close();
+   }
    
    private int[] randomArray (int arraySize){
       int[] array = new int[arraySize];

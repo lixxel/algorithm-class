@@ -21,6 +21,7 @@ public class SortMain{
       BenchmarkSorts sorter = new BenchmarkSorts(sizes);
       sorter.runSorts();
       sorter.displayReport();
+      sorter.saveReport();
       
    }
 
